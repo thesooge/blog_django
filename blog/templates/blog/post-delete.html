@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block page_title %}
+Delete
+{% endblock page_title %}
+
+{% block page_onscreen_title %}
+delete post {{post.title}}
+{% endblock page_onscreen_title %}
+
+{% block page_onscreen_title_detail %}
+are you sure to delete this?
+{% endblock page_onscreen_title_detail %}
+
+
+{% block page_img %}
+    {% static 'assets/img/home-bg.jpg' %}
+{% endblock page_img %}
+
+{% block content %}
+
+<!-- Post preview-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <form method='post'>
+                {% csrf_token %}
+                <button type='submit' class= 'btn btn-danger'> Yes delete! </button>
+            </form>
+
+        <hr class="my-4" />
+        
+
+        </div>
+    </div>
+</div>        
+
+
+{% endblock content %}
