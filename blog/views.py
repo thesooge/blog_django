@@ -22,7 +22,8 @@ class BlogPostDetailView(generic.DetailView):
 class DeletPost(generic.DeleteView):
     model = BlogPost
     template_name = 'blog/post-delete.html'
-
+    # or
+    # success_url = reverse_lazy('home)
     def get_success_url(self) -> str:
         return reverse('home')
     
