@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -23,3 +24,15 @@ class BlogPost(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail' , args=[str(self.id)])
+
+
+class BlogComment(models.Model):
+    author = models.ForeignKey(get_user_model(), on_delete= models.CASCADE)
+    post = models.ForeignKey(BlogPost, on_delete= models.CASCADE)
+    datetime_created = models.DateTimeField(auto_now_add = True)
+    
+    body = models.TextField()
+
+    def __str__(self) -> str:
+        return f"{self.author} commented to {self.post}"
+    
