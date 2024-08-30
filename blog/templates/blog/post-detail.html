@@ -10,11 +10,11 @@ Detail {{post.id}}
 {% endblock page_onscreen_title %}
 
 {% block page_onscreen_title_detail %}
-                    <p class="post-meta">
-                        Posted by
-                    {{post.author}} on 
-                                {{post.datetime_modified}}
-                    </p>
+<p class="post-meta">
+    Posted by
+{{post.author}} on 
+            {{post.datetime_modified}}
+</p>
 {% endblock page_onscreen_title_detail %}
 
 {% block content %}
@@ -27,6 +27,13 @@ Detail {{post.id}}
                 <a class= "btn btn-danger" href="{% url 'delete' post.id %}" role = 'button'>Delete</a>
                  <a class= "btn btn-warning" href="{% url 'update_post' post.id %}" role = 'button'>Edit</a>
 
+            </div>
+                <div class= 'container'>
+                <form action='' method ='POST'>
+                {% csrf_token %}
+                {{ comment_form }}
+            
+                </form>
             </div>
             
         </div>
